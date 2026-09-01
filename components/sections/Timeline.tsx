@@ -44,7 +44,7 @@ const MILESTONES: Milestone[] = [
 export default function Timeline() {
   const { open } = useModal();
   return (
-    <section className="relative overflow-hidden border-y border-gold/10 bg-ink-2 py-24 sm:py-28">
+    <section className="relative overflow-hidden border-y border-gold/10 bg-ink-2 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5">
         <Reveal className="mb-4">
           <p className="chip">The Career</p>

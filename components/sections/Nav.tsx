@@ -22,11 +22,19 @@ export default function Nav() {
   const menuP = usePresence(menu);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 640);
+    const onScroll = () => setScrolled(window.scrollY > 400);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Lock body scroll while the mobile menu is open.
+  useEffect(() => {
+    document.body.style.overflow = menu ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menu]);
 
   return (
     <>
@@ -67,7 +75,7 @@ export default function Nav() {
             </a>
           </div>
           <button
-            className="text-gold md:hidden"
+            className="-mr-2 p-2 text-gold md:hidden"
             onClick={() => setMenu(true)}
             aria-label="Open menu"
           >
@@ -92,7 +100,7 @@ export default function Nav() {
             <button
               onClick={() => setMenu(false)}
               aria-label="Close menu"
-              className="text-gold"
+              className="-mr-2 p-2 text-gold"
             >
               <X size={28} />
             </button>

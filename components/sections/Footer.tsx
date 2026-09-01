@@ -98,7 +98,7 @@ export default function Footer() {
           </nav>
 
           <a
-            href="https://instagram.com"
+            href="https://instagram.com/TheRealCornstar"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-gold/25 px-5 py-2.5 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-cream transition hover:border-gold hover:text-gold"

@@ -110,7 +110,7 @@ export default function ModalProvider({ children }: { children: ReactNode }) {
             <button
               onClick={attemptClose}
               aria-label="Close"
-              className="absolute right-4 top-4 text-cream-dim transition hover:text-gold"
+              className="absolute right-2 top-2 p-2 text-cream-dim transition hover:text-gold"
             >
               <X size={22} />
             </button>

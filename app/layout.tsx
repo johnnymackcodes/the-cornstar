@@ -25,7 +25,7 @@ const plexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
-const SITE = "https://cornstar.example.com";
+const SITE = "https://the-cornstar.onrender.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
@@ -79,6 +79,9 @@ export default function RootLayout({
       <body
         className={`${anton.variable} ${playfair.variable} ${inter.variable} ${plexMono.variable} grain vignette antialiased`}
       >
+        <noscript>
+          <style>{`#cs-loader{display:none!important}`}</style>
+        </noscript>
         {children}
       </body>
     </html>

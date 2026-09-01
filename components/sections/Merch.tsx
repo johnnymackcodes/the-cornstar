@@ -229,7 +229,7 @@ export default function Merch() {
                     </span>
                     <button
                       onClick={() => add(p.id)}
-                      className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 px-4 py-2 font-mono text-[0.65rem] uppercase tracking-[0.15em] text-cream transition hover:bg-gold hover:text-ink"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 px-4 py-2.5 font-mono text-[0.65rem] uppercase tracking-[0.15em] text-cream transition hover:bg-gold hover:text-ink"
                     >
                       {added === p.id ? (
                         <>

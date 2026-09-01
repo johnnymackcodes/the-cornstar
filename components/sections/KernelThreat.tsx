@@ -87,31 +87,31 @@ export default function KernelThreat() {
         {/* Comparison */}
         <Reveal className="mt-16">
           <div className="overflow-hidden rounded-2xl border border-ink/12 bg-white">
-            <div className="grid grid-cols-[1.1fr_1fr_1fr] border-b border-ink/10 bg-ink text-cream">
-              <div className="px-5 py-4 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-cream-dim">
+            <div className="grid grid-cols-[0.85fr_1fr_1fr] border-b border-ink/10 bg-ink text-cream">
+              <div className="px-3 py-4 font-mono text-[0.58rem] uppercase tracking-[0.12em] text-cream-dim sm:px-5 sm:text-[0.65rem] sm:tracking-[0.2em]">
                 Metric
               </div>
-              <div className="px-5 py-4 text-center font-display text-lg uppercase gold-text">
+              <div className="px-3 py-4 text-center font-display text-base uppercase gold-text sm:px-5 sm:text-lg">
                 Cornstar
               </div>
-              <div className="px-5 py-4 text-center font-display text-lg uppercase text-cream">
+              <div className="px-3 py-4 text-center font-display text-base uppercase text-cream sm:px-5 sm:text-lg">
                 Kernel
               </div>
             </div>
             {ROWS.map((r, i) => (
               <div
                 key={r.label}
-                className={`grid grid-cols-[1.1fr_1fr_1fr] items-center ${
+                className={`grid grid-cols-[0.85fr_1fr_1fr] items-center ${
                   i % 2 ? "bg-ink/[0.03]" : "bg-white"
                 }`}
               >
-                <div className="px-5 py-4 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-ink/50">
+                <div className="px-3 py-4 font-mono text-[0.55rem] uppercase leading-tight tracking-[0.1em] text-ink/50 sm:px-5 sm:text-[0.65rem] sm:tracking-[0.18em]">
                   {r.label}
                 </div>
-                <div className="border-x border-ink/8 px-5 py-4 text-center text-sm font-medium text-ink">
+                <div className="border-x border-ink/8 px-3 py-4 text-center text-xs font-medium text-ink sm:px-5 sm:text-sm">
                   {r.cornstar}
                 </div>
-                <div className="px-5 py-4 text-center text-sm font-medium text-ink">
+                <div className="px-3 py-4 text-center text-xs font-medium text-ink sm:px-5 sm:text-sm">
                   {r.kernel}
                 </div>
               </div>

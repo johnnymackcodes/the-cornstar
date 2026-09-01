@@ -21,7 +21,7 @@ const STATS: Stat[] = [
 
 export default function LegendStats() {
   return (
-    <section className="relative border-b border-gold/10 bg-ink-2 py-20 sm:py-28">
+    <section className="relative border-b border-gold/10 bg-ink-2 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5">
         <Reveal className="mb-14 text-center">
           <p className="chip">By The Numbers</p>

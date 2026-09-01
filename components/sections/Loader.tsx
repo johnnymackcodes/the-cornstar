@@ -64,6 +64,7 @@ export default function Loader() {
 
   return (
     <div
+      id="cs-loader"
       className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-ink transition-[opacity,filter] duration-700 ease-in-out ${
         leaving ? "opacity-0 brightness-[3]" : "opacity-100"
       }`}
@@ -80,7 +81,6 @@ export default function Loader() {
         />
       </div>
 
-      <h1 className="sr-only">Cornstar</h1>
       <Image
         src={wordmark}
         alt="Cornstar"

@@ -51,6 +51,7 @@ export default function Newsletter() {
                 <form
                   key="form"
                   onSubmit={submit}
+                  noValidate
                   className="ov-fade mx-auto flex max-w-md flex-col gap-3 sm:flex-row"
                 >
                   <input
@@ -62,7 +63,9 @@ export default function Newsletter() {
                     }}
                     placeholder="you@producewood.com"
                     aria-label="Email address"
-                    className={`flex-1 rounded-full border bg-ink-2 px-6 py-3.5 font-mono text-sm text-cream placeholder:text-cream-dim/40 outline-none transition focus:border-gold ${
+                    aria-invalid={error}
+                    aria-describedby={error ? "cs-nl-error" : undefined}
+                    className={`flex-1 rounded-full border bg-ink-2 px-6 py-3.5 font-mono text-sm text-cream placeholder:text-cream-dim/40 outline-none transition focus:border-gold focus-visible:ring-2 focus-visible:ring-gold ${
                       error ? "border-carpet-hi" : "border-gold/25"
                     }`}
                   />
@@ -86,7 +89,11 @@ export default function Newsletter() {
                 </div>
               )}
             {error && (
-              <p className="mt-3 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-carpet-hi">
+              <p
+                id="cs-nl-error"
+                role="alert"
+                className="mt-3 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-carpet-hi"
+              >
                 That email would not survive Producewood. Try a real one.
               </p>
             )}

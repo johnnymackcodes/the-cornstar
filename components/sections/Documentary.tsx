@@ -46,7 +46,7 @@ export default function Documentary() {
           <p className="font-mono text-[0.7rem] uppercase tracking-[0.4em] text-white/40">
             A Prestige Documentary Event
           </p>
-          <h2 className="mt-6 font-display text-6xl uppercase leading-none text-white grayscale sm:text-8xl">
+          <h2 className="mt-6 font-display text-6xl uppercase leading-none text-white sm:text-8xl">
             Behind The Cob
           </h2>
           <p className="mt-6 font-serif text-xl italic tracking-wide text-white/60">

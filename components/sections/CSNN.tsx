@@ -15,7 +15,7 @@ const ARTICLES = [
 
 export default function CSNN() {
   return (
-    <section className="relative border-y border-gold/10 bg-ink-2 py-24 sm:py-28">
+    <section className="relative border-y border-gold/10 bg-ink-2 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5">
         <Reveal className="mb-12">
           <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-end sm:justify-between">
