@@ -2,31 +2,34 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "motion/react";
 import { Menu, X } from "lucide-react";
 import { usePresence } from "@/components/ui/usePresence";
 import wordmark from "@/assets/cornstar-wordmark.png";
 
 const LINKS = [
-  { href: "#legend", label: "The Legend" },
-  { href: "#pussyimone", label: "Pussyimone" },
-  { href: "#kernel", label: "Kernel" },
-  { href: "#documentary", label: "The Film" },
-  { href: "#merch", label: "Merch" },
-  { href: "#press", label: "Press" },
+  { href: "/the-legend", label: "The Legend" },
+  { href: "/pussyimone", label: "Pussyimone" },
+  { href: "/kernel", label: "Kernel" },
+  { href: "/the-film", label: "The Film" },
+  { href: "/news", label: "News" },
+  { href: "/#merch", label: "Merch" },
 ];
 
-export default function Nav() {
+export default function Nav({ alwaysVisible = false }: { alwaysVisible?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [menu, setMenu] = useState(false);
   const menuP = usePresence(menu);
+  const show = alwaysVisible || scrolled;
 
   useEffect(() => {
+    if (alwaysVisible) return;
     const onScroll = () => setScrolled(window.scrollY > 400);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [alwaysVisible]);
 
   // Lock body scroll while the mobile menu is open.
   useEffect(() => {
@@ -40,15 +43,12 @@ export default function Nav() {
     <>
       <motion.header
         initial={false}
-        animate={{
-          y: scrolled ? 0 : -80,
-          opacity: scrolled ? 1 : 0,
-        }}
+        animate={{ y: show ? 0 : -80, opacity: show ? 1 : 0 }}
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         className="fixed inset-x-0 top-0 z-[70] border-b border-gold/15 bg-ink/85 backdrop-blur-md"
       >
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5">
-          <a href="#top" aria-label="Cornstar — home" className="shrink-0">
+          <Link href="/" aria-label="Cornstar — home" className="shrink-0">
             <Image
               src={wordmark}
               alt="Cornstar"
@@ -56,23 +56,23 @@ export default function Nav() {
               sizes="150px"
               className="h-11 w-auto"
             />
-          </a>
+          </Link>
           <div className="hidden items-center gap-7 md:flex">
             {LINKS.map((l) => (
-              <a
+              <Link
                 key={l.href}
                 href={l.href}
                 className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-cream-dim transition hover:text-gold"
               >
                 {l.label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#inner-cob"
+            <Link
+              href="/#inner-cob"
               className="btn-gold rounded-full px-5 py-2 text-[0.7rem]"
             >
               Inner Cob
-            </a>
+            </Link>
           </div>
           <button
             className="-mr-2 p-2 text-gold md:hidden"
@@ -91,12 +91,7 @@ export default function Nav() {
           }`}
         >
           <div className="flex items-center justify-between">
-            <Image
-              src={wordmark}
-              alt="Cornstar"
-              sizes="150px"
-              className="h-10 w-auto"
-            />
+            <Image src={wordmark} alt="Cornstar" sizes="150px" className="h-10 w-auto" />
             <button
               onClick={() => setMenu(false)}
               aria-label="Close menu"
@@ -106,9 +101,9 @@ export default function Nav() {
             </button>
           </div>
           <div className="mt-14 flex flex-col gap-6">
-            {LINKS.concat({ href: "#inner-cob", label: "Inner Cob" }).map(
+            {LINKS.concat({ href: "/#inner-cob", label: "Inner Cob" }).map(
               (l, i) => (
-                <a
+                <Link
                   key={l.href}
                   href={l.href}
                   onClick={() => setMenu(false)}
@@ -122,7 +117,7 @@ export default function Nav() {
                   }`}
                 >
                   {l.label}
-                </a>
+                </Link>
               )
             )}
           </div>

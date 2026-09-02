@@ -1,12 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import Reveal from "@/components/ui/Reveal";
-import { useModal } from "@/components/ui/ModalProvider";
 import couple from "@/assets/cornstar-pussyimone.png";
 
 export default function Pussyimone() {
-  const { open } = useModal();
   return (
     <section
       id="pussyimone"
@@ -61,18 +60,12 @@ export default function Pussyimone() {
           </Reveal>
 
           <Reveal delay={0.24}>
-            <button
-              onClick={() =>
-                open({
-                  kicker: "Producewood's Finest",
-                  title: "She'll See You Now.",
-                  body: "Pussyimone has reviewed your request. She has notes. She has always had notes. Cornstar is, as ever, one of them.",
-                })
-              }
-              className="btn-gold mt-9 rounded-full px-8 py-3.5 text-sm"
+            <Link
+              href="/pussyimone"
+              className="btn-gold mt-9 inline-block rounded-full px-8 py-3.5 text-sm"
             >
               Meet Pussyimone
-            </button>
+            </Link>
           </Reveal>
         </div>
 

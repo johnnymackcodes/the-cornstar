@@ -1,12 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import Reveal from "@/components/ui/Reveal";
-import { useModal } from "@/components/ui/ModalProvider";
 import redCarpet from "@/assets/cornstar-redcarpet.png";
 
 export default function About() {
-  const { open } = useModal();
   return (
     <section id="legend" className="relative scroll-mt-24 py-24 sm:py-32">
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 lg:grid-cols-2">
@@ -64,26 +63,12 @@ export default function About() {
           </Reveal>
 
           <Reveal delay={0.2}>
-            <button
-              onClick={() =>
-                open({
-                  kicker: "Chapter One",
-                  title: "The Biography Isn't Ready.",
-                  body: (
-                    <>
-                      Cornstar has personally rewritten the first chapter{" "}
-                      <span className="text-gold">forty-one times</span>. Each
-                      version is more flattering than the last. The ghostwriter
-                      has requested hazard pay.
-                    </>
-                  ),
-                  resist: true,
-                })
-              }
-              className="btn-gold mt-10 rounded-full px-8 py-3.5 text-sm"
+            <Link
+              href="/the-legend"
+              className="btn-gold mt-10 inline-block rounded-full px-8 py-3.5 text-sm"
             >
               Read The Unauthorized Authorized Biography
-            </button>
+            </Link>
           </Reveal>
         </div>
       </div>

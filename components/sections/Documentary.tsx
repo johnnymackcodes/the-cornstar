@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Play, HeartPulse } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import { useModal } from "@/components/ui/ModalProvider";
@@ -146,6 +147,13 @@ export default function Documentary() {
               </p>
             )}
           </div>
+
+          <Link
+            href="/the-film"
+            className="mt-6 inline-block font-mono text-[0.65rem] uppercase tracking-[0.25em] text-white/50 underline-offset-4 transition hover:text-white hover:underline"
+          >
+            Enter The Full Documentary →
+          </Link>
         </Reveal>
       </div>
     </section>
