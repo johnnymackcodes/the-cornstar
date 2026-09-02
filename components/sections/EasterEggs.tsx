@@ -21,11 +21,13 @@ const KONAMI = [
 export default function EasterEggs() {
   const [konami, setKonami] = useState(false);
   const [idleMsg, setIdleMsg] = useState<string | null>(null);
+  const [buttered, setButtered] = useState(false);
   const konamiP = usePresence(konami);
   const idleP = usePresence(!!idleMsg);
   const shownMsg = useRef<string>("");
   if (idleMsg) shownMsg.current = idleMsg;
   const seq = useRef<string[]>([]);
+  const wordBuf = useRef<string>("");
   const t30 = useRef<ReturnType<typeof setTimeout> | null>(null);
   const t60 = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -55,6 +57,21 @@ export default function EasterEggs() {
       ) {
         setKonami(true);
         seq.current = [];
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  // Type "butter" anywhere.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key.length !== 1 || !/[a-z]/i.test(e.key)) return;
+      wordBuf.current = (wordBuf.current + e.key.toLowerCase()).slice(-6);
+      if (wordBuf.current === "butter") {
+        wordBuf.current = "";
+        setButtered(true);
+        setTimeout(() => setButtered(false), 1900);
       }
     };
     window.addEventListener("keydown", onKey);
@@ -92,6 +109,25 @@ export default function EasterEggs() {
 
   return (
     <>
+      {/* "butter" flash */}
+      {buttered && (
+        <div
+          className="pointer-events-none fixed inset-0 z-[96] flex items-center justify-center"
+          style={{ animation: "butter-flash 1.9s ease-out" }}
+        >
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(circle at 50% 50%, rgba(255,210,77,0.55), rgba(231,178,76,0.16) 42%, transparent 72%)",
+            }}
+          />
+          <p className="relative font-display text-6xl uppercase gold-text gold-glow sm:text-8xl">
+            🧈 Buttered.
+          </p>
+        </div>
+      )}
+
       {/* Konami full-screen reveal */}
       {konamiP.mounted && (
         <div

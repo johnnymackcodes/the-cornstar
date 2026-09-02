@@ -82,6 +82,29 @@ export default function RootLayout({
         <noscript>
           <style>{`#cs-loader{display:none!important}`}</style>
         </noscript>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                name: "CORNSTAR™",
+                url: SITE,
+                description:
+                  "The official home of Cornstar™ — legend, icon, cultural vegetable.",
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                name: "Cornstar Entertainment",
+                url: SITE,
+                slogan: "The OG Isn't Done Yet.",
+                sameAs: ["https://instagram.com/TheRealCornstar"],
+              },
+            ]),
+          }}
+        />
         {children}
       </body>
     </html>

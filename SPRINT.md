@@ -9,7 +9,7 @@ Deploying incrementally to https://the-cornstar.onrender.com (manual trigger —
 - [x] `robots.ts` (allow all + sitemap ref)
 - [x] Real key-art OG share card (embeds logo art)
 - [x] `sitemap.ts` (home + pages + all news articles)
-- [ ] Expanded structured data (JSON-LD)
+- [x] Expanded structured data (WebSite, Organization, NewsArticle)
 - [ ] Image/source optimization pass
 
 ### Expand the universe (dedicated pages)
@@ -22,12 +22,12 @@ Deploying incrementally to https://the-cornstar.onrender.com (manual trigger —
 - [x] Wire home CTAs → new pages (About, Pussyimone, CSNN, Documentary)
 
 ### Make it functional
-- [ ] Newsletter → Kit (real form)
+- [x] Newsletter → Kit-ready (/api/subscribe, safe: off until KIT_FORM_UID set to a dedicated form)
 - [ ] Cart flow polish (Stripe-ready, no live payments)
 - [ ] Document: custom domain, Render↔GitHub auto-deploy, analytics
 
 ### Design & motion polish
-- [ ] Micro-interactions, more easter eggs, mobile refinements
+- [x] Scroll-progress bar; 'butter' easter egg; site-wide nav polish
 
 ### Blocked (need the user)
 - Stripe live checkout (keys + it's a joke shop)

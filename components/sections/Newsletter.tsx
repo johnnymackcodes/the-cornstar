@@ -17,6 +17,13 @@ export default function Newsletter() {
     setError(false);
     setState("welcome");
     setTimeout(() => setState("notified"), 1400);
+    // Fire-and-forget: subscribes for real only if a dedicated Kit form is
+    // configured (KIT_FORM_UID); otherwise it's a no-op. Never blocks the UX.
+    fetch("/api/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    }).catch(() => {});
   };
 
   return (

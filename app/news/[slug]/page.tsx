@@ -31,8 +31,29 @@ export default async function ArticlePage({
   const article = getArticle(slug);
   if (!article) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: article.headline,
+    description: article.dek,
+    articleSection: article.category,
+    author: { "@type": "Organization", name: "Cornstar News Network (CSNN)" },
+    publisher: {
+      "@type": "Organization",
+      name: "Cornstar Entertainment",
+    },
+    url: `https://the-cornstar.onrender.com/news/${article.slug}`,
+    isAccessibleForFree: true,
+    // A fictional, satirical publication.
+    creativeWorkStatus: "Satire",
+  };
+
   return (
     <PageShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ArticleContent article={article} />
     </PageShell>
   );

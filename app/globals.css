@@ -307,6 +307,14 @@ input:focus-visible,
   .ov-fade, .ov-pop, .ov-slide-right, .ov-rise, .ov-scale { animation: none; }
 }
 
+/* Butter easter egg flash */
+@keyframes butter-flash {
+  0% { opacity: 0; transform: scale(0.9); }
+  18% { opacity: 1; transform: scale(1.04); }
+  30% { transform: scale(1); }
+  100% { opacity: 0; transform: scale(1); }
+}
+
 /* Loader phase text fade */
 @keyframes phase-in {
   from { opacity: 0; transform: translateY(10px); }

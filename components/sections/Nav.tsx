@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { Menu, X } from "lucide-react";
 import { usePresence } from "@/components/ui/usePresence";
+import ScrollProgress from "@/components/ui/ScrollProgress";
 import wordmark from "@/assets/cornstar-wordmark.png";
 
 const LINKS = [
@@ -41,6 +42,7 @@ export default function Nav({ alwaysVisible = false }: { alwaysVisible?: boolean
 
   return (
     <>
+      <ScrollProgress />
       <motion.header
         initial={false}
         animate={{ y: show ? 0 : -80, opacity: show ? 1 : 0 }}
