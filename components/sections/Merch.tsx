@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { ShoppingBag, Plus, X, Check } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { ShoppingBag, Plus, Minus, X, Check } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import { useModal } from "@/components/ui/ModalProvider";
 import { usePresence } from "@/components/ui/usePresence";
@@ -161,6 +161,19 @@ export default function Merch() {
   const [drawer, setDrawer] = useState(false);
   const [added, setAdded] = useState<string | null>(null);
 
+  // Persist the cart across page visits.
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("cs_cart");
+      if (saved) setCart(JSON.parse(saved));
+    } catch {}
+  }, []);
+  useEffect(() => {
+    try {
+      localStorage.setItem("cs_cart", JSON.stringify(cart));
+    } catch {}
+  }, [cart]);
+
   const count = useMemo(
     () => Object.values(cart).reduce((a, b) => a + b, 0),
     [cart]
@@ -186,6 +199,16 @@ export default function Merch() {
       const n = { ...c };
       delete n[id];
       return n;
+    });
+  const setQty = (id: string, delta: number) =>
+    setCart((c) => {
+      const q = (c[id] ?? 0) + delta;
+      if (q <= 0) {
+        const n = { ...c };
+        delete n[id];
+        return n;
+      }
+      return { ...c, [id]: q };
     });
 
   return (
@@ -293,23 +316,44 @@ export default function Merch() {
                   return (
                     <div
                       key={id}
-                      className="flex items-center justify-between rounded-lg border border-gold/10 bg-ink p-3"
+                      className="rounded-lg border border-gold/10 bg-ink p-3"
                     >
-                      <div>
-                        <p className="font-display text-sm uppercase text-cream">
+                      <div className="flex items-start justify-between gap-3">
+                        <p className="font-display text-sm uppercase leading-tight text-cream">
                           {p.name}
                         </p>
-                        <p className="font-mono text-[0.65rem] text-cream-dim">
-                          Qty {q} · ${(p.price * q).toLocaleString("en-US")}
-                        </p>
+                        <button
+                          onClick={() => remove(id)}
+                          className="-m-1 shrink-0 p-1 text-cream-dim hover:text-carpet-hi"
+                          aria-label={`Remove ${p.name}`}
+                        >
+                          <X size={16} />
+                        </button>
                       </div>
-                      <button
-                        onClick={() => remove(id)}
-                        className="text-cream-dim hover:text-carpet-hi"
-                        aria-label={`Remove ${p.name}`}
-                      >
-                        <X size={16} />
-                      </button>
+                      <div className="mt-3 flex items-center justify-between">
+                        <div className="flex items-center gap-1 rounded-full border border-gold/20">
+                          <button
+                            onClick={() => setQty(id, -1)}
+                            className="grid h-7 w-7 place-items-center rounded-full text-cream-dim transition hover:text-gold"
+                            aria-label={`Decrease ${p.name}`}
+                          >
+                            <Minus size={13} />
+                          </button>
+                          <span className="w-6 text-center font-mono text-xs text-cream">
+                            {q}
+                          </span>
+                          <button
+                            onClick={() => setQty(id, 1)}
+                            className="grid h-7 w-7 place-items-center rounded-full text-cream-dim transition hover:text-gold"
+                            aria-label={`Increase ${p.name}`}
+                          >
+                            <Plus size={13} />
+                          </button>
+                        </div>
+                        <span className="font-mono text-xs text-gold">
+                          ${(p.price * q).toLocaleString("en-US")}
+                        </span>
+                      </div>
                     </div>
                   );
                 })}

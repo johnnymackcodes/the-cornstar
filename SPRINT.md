@@ -23,8 +23,8 @@ Deploying incrementally to https://the-cornstar.onrender.com (manual trigger —
 
 ### Make it functional
 - [x] Newsletter → Kit-ready (/api/subscribe, safe: off until KIT_FORM_UID set to a dedicated form)
-- [ ] Cart flow polish (Stripe-ready, no live payments)
-- [ ] Document: custom domain, Render↔GitHub auto-deploy, analytics
+- [x] Cart flow polish (qty controls + localStorage persistence)
+- [x] DEPLOY.md — custom domain, auto-deploy, Kit, analytics, Stripe steps
 
 ### Design & motion polish
 - [x] Scroll-progress bar; 'butter' easter egg; site-wide nav polish
