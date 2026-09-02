@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import Reveal from "@/components/ui/Reveal";
 import { useModal } from "@/components/ui/ModalProvider";
+import { useDragScroll } from "@/components/ui/useDragScroll";
 
 type Milestone = {
   year: string;
@@ -43,6 +44,7 @@ const MILESTONES: Milestone[] = [
 
 export default function Timeline() {
   const { open } = useModal();
+  const { ref: reelRef, dragProps } = useDragScroll<HTMLDivElement>();
   return (
     <section className="relative overflow-hidden border-y border-gold/10 bg-ink-2 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5">
@@ -61,7 +63,10 @@ export default function Timeline() {
       </div>
 
       <div className="relative">
-        <div className="flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-8 [scrollbar-width:thin] sm:px-[max(1.25rem,calc((100vw-80rem)/2))]">
+        <div
+          ref={reelRef}
+          {...dragProps}
+          className="flex cursor-grab snap-x snap-proximity select-none gap-5 overflow-x-auto px-5 pb-8 [scrollbar-width:thin] active:cursor-grabbing sm:px-[max(1.25rem,calc((100vw-80rem)/2))]">
           {/* connecting rail */}
           {MILESTONES.map((m, i) => {
             const clickable = m.secret;
