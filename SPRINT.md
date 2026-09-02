@@ -10,7 +10,7 @@ Deploying incrementally to https://the-cornstar.onrender.com (manual trigger —
 - [x] Real key-art OG share card (embeds logo art)
 - [x] `sitemap.ts` (home + pages + all news articles)
 - [x] Expanded structured data (WebSite, Organization, NewsArticle)
-- [ ] Image/source optimization pass
+- [~] Image optimization — next/image already serves per-viewport WebP to users; source pre-resize deferred (low user-facing value, would cost art quality)
 
 ### Expand the universe (dedicated pages)
 - [x] Shared PageShell + site-wide Nav (route-based, alwaysVisible mode) + PageHeader
@@ -33,3 +33,6 @@ Deploying incrementally to https://the-cornstar.onrender.com (manual trigger —
 - Stripe live checkout (keys + it's a joke shop)
 - Custom domain (needs owned domain + DNS)
 - Render↔GitHub OAuth (dashboard click) + re-privatize repo
+
+## Result
+Complete across all four tracks. 22 routes live. Everything deployed and verified green (all 200, 404 works, /api/subscribe safe). See DEPLOY.md for the handful of one-click items only you can do.
